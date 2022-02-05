@@ -18,7 +18,7 @@
 .header {
   padding: 15px;
   width: 100%;
-  height: 50px;
+  height: 70px;
 
   text-align: center;
 }

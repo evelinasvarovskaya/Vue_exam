@@ -1,6 +1,6 @@
 <template>
   <div>
-    <acticlesForm></acticlesForm>
+    <acticlesForm @submitForm="submitForm"></acticlesForm>
     <h1 class="article_title">Список объявлений</h1>
     <div class="wrapper">
       <div v-for="item in articlesLIst" :key="item.id" class="articles-wrapper" >
@@ -59,6 +59,12 @@ export default {
   components:{
     acticlesForm
   },
+  methods: {
+    async submitForm() {
+      const response = await instance.get('/brom/sales')
+      this.articlesLIst = response.data
+    }
+  },
   async fetch() {
     const response = await instance.get('/brom/sales')
     this.articlesLIst = response.data
@@ -75,29 +81,33 @@ export default {
 /*  border-radius: 5px;*/
 /*}*/
 
+
+.articles-wrapper {
+  margin: 20px;
+}
+
 .articles-wrapper-car {
   background-color: darkgrey;
-  height: 220px;
   width: 220px;
-  margin: 20px;
   padding: 15px;
+  min-height: 290px;
   border-radius: 5px;
+
 }
 
 .articles-wrapper-apartment {
   background-color: beige;
-  height: 220px;
   width: 220px;
-  margin: 20px;
+
   padding: 15px;
+  min-height: 290px;
   border-radius: 5px;
 }
 
 .wrapper {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
-  align-items: center;
+  align-items: stretch;
   /*justify-content: space-around;*/
 }
 
@@ -108,6 +118,4 @@ export default {
 .articles_logo {
   height: 80px;
 }
-
-
 </style>

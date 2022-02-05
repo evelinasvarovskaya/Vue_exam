@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="mainPage">
-      <img :src='GetSrc(mainPage.image)' alt="mainPage_photo" class="mainPage_photo">
-      <div>{{mainPage.text}}</div>
+    <div class="mainPage" v-if="mainPage">
+      <img v-if="mainPage.image" :src='GetSrc(mainPage.image)' alt="mainPage_photo" class="mainPage_photo">
+      <div>{{ mainPage.text }}</div>
     </div>
   </div>
 </template>
@@ -11,7 +11,7 @@
 import {instance} from "../config/instance";
 
 export default {
-  data () {
+  data() {
     return {
       mainPage: null,
     }
@@ -40,6 +40,7 @@ export default {
   /*height: 100px;*/
   /*width: 200px;*/
 }
+
 .mainPage_photo {
   height: 300px;
   margin-right: 30px;
